@@ -1,7 +1,5 @@
 (function() {
 'use strict';
-
-myController.$inject = ['myService'];
 angular.module('myApp', []);
 
 angular.module('myApp').service('myService', myService);
@@ -11,7 +9,7 @@ function myService($q,$http){
     vm.loadData = loadData;
 
     function loadData(){
-        var url = "/js/phones.json";
+        var url = "phones.json";
         var deferred = $q.defer();
         
         $http.get(url).then(
@@ -34,10 +32,16 @@ function myService($q,$http){
 }
 
 angular.module('myApp').controller('myController', myController);
+myController.$inject = ['myService'];
 function myController(myService) {
     var vm = this;
     vm.title = "Angular template";
+    vm.sayHello = sayHello;
     myService.loadData();
+
+    function sayHello(){
+        return "hello";
+    }
 }
 
 })();
