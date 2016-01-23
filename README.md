@@ -1,1 +1,1 @@
-# scaffold-angular-project
+# angular-project-template
