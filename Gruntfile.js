@@ -104,6 +104,21 @@ module.exports = function (grunt) {
         '.jekyll'
       ]
     },
+    ngAnnotate: {
+        options: {
+            singleQuotes: true
+        },
+        app: {
+             files: [
+                {
+                    expand: true,
+                    src: [
+                        '{.tmp,<%= yeoman.app %>}/js/**/*.js'
+                    ]
+                },
+            ],
+        }
+    },
     sass: {
       options: {
         debugInfo: false,
@@ -345,6 +360,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean',
     // Jekyll cleans files from the target directory, so must run first
+    'ngAnnotate',
     'jekyll:dist',
     'concurrent:dist',
     'useminPrepare',
